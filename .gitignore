@@ -3,6 +3,8 @@
 .AppleDouble
 .LSOverride
 ._*
+.Spotlight-V100
+.Trashes
 
 # Windows
 Thumbs.db
@@ -36,11 +38,14 @@ venv/
 env/
 ENV/
 thesis-env/
+.conda/
 
 # Secrets
 .env
 .env.*
 !.env.example
+*.pem
+secrets/
 
 # Jupyter
 .ipynb_checkpoints/
@@ -55,9 +60,12 @@ thesis-env/
 htmlcov/
 .cache/
 
-# Logs
+# Logs and editor backups
 *.log
 logs/
+*.bak
+*.orig
+*.tmp
 
 # ML / Hugging Face caches and weights
 *.pt
