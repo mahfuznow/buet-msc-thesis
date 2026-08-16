@@ -67,6 +67,9 @@ logs/
 *.orig
 *.tmp
 
+# Dataset archives (extracted copy is already in the repo)
+*.zip
+
 # ML / Hugging Face caches and weights
 *.pt
 *.pth
