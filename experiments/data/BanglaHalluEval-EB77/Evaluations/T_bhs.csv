@@ -1,0 +1,15 @@
+model,mode,task,n_gt,n_hallu,a_err,b_err,bhs,note
+banglallama,baseline,gqa,400,400,83.25,14.0,48.62,OK
+banglallama,baseline,summ,100,300,89.0,4.67,46.84,OK
+banglallama,baseline,reason,100,100,100.0,0.0,50.0,OK
+banglallama,baseline,codemix,400,400,85.5,11.25,48.38,OK
+banglallama,cot,gqa,400,400,100.0,0.0,50.0,OK
+banglallama,cot,summ,100,300,100.0,0.0,50.0,OK
+banglallama,cot,reason,100,100,100.0,0.0,50.0,OK
+titullm,baseline,gqa,400,400,99.75,0.25,50.0,OK
+titullm,baseline,summ,100,300,100.0,0.33,50.16,OK
+titullm,baseline,reason,100,100,100.0,0.0,50.0,OK
+titullm,baseline,codemix,400,400,99.25,2.0,50.62,OK
+titullm,cot,gqa,400,400,63.5,39.25,51.38,OK
+titullm,cot,summ,100,300,30.0,61.33,45.66,OK
+titullm,cot,reason,100,100,66.0,31.0,48.5,OK

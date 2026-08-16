@@ -1,0 +1,16 @@
+task,model,a_err,b_err,bhs,note
+QA,tigerllm_9b,18.4,28.61,23.5,OK
+QA,gpt4_1_mini,13.9,17.22,15.56,OK
+QA,qwen2_5_32b,N/A,N/A,N/A,MISSING hallu: None
+QA,deepseek_r1_14b,N/A,N/A,N/A,MISSING hallu: None; MISSING gt: None
+QA,gemma2_27b,N/A,N/A,N/A,MISSING hallu: None; MISSING gt: None
+Summarization,tigerllm_9b,4.8,47.53,26.16,OK
+Summarization,gpt4_1_mini,8.2,11.37,9.79,OK
+Summarization,qwen2_5_32b,4.7,10.73,7.71,OK
+Summarization,deepseek_r1_14b,17.6,6.72,12.16,OK
+Summarization,gemma2_27b,4.2,31.4,17.8,OK
+Reasoning,tigerllm_9b,21.4,85.5,53.45,OK
+Reasoning,gpt4_1_mini,26.5,21.1,23.8,OK
+Reasoning,qwen2_5_32b,24.8,29.06,26.93,OK
+Reasoning,deepseek_r1_14b,19.9,16.34,18.12,OK
+Reasoning,gemma2_27b,5.5,72.6,39.05,OK

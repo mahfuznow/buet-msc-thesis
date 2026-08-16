@@ -1,0 +1,4 @@
+task,n_A,n_B,baseline_a_err,cot_a_err,ecot_a_err,baseline_b_err,cot_b_err,ecot_b_err,baseline_bhs,cot_bhs,ecot_bhs,delta_bhs_vs_baseline,delta_bhs_vs_cot
+QA,50,50,16.0,38.0,22.0,30.0,40.0,18.0,23.0,39.0,20.0,-3.0,-19.0
+Summarization,50,50,10.0,4.0,14.0,16.0,14.0,14.0,13.0,9.0,14.0,1.0,5.0
+Reasoning,50,50,22.0,8.0,4.0,28.0,22.0,0.0,25.0,15.0,2.0,-23.0,-13.0

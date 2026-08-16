@@ -1,0 +1,43 @@
+You are a hallucination detector for Bengali medical-summary generation.
+
+EVIDENCE (the source medical query/document being summarized):
+{source}
+
+CANDIDATE SUMMARY: {candidate}
+
+Decompose the CANDIDATE SUMMARY into atomic factual claims (each medical fact,
+symptom, medication, decision, or instruction). For each claim, copy a word-for-word
+supporting span from EVIDENCE into "supported_by" (empty string if no such span
+exists), then assign one of:
+
+  - "supported"    => the claim is conveyed by the cited span, including
+                      paraphrases, synonyms, near-equivalent rewordings,
+                      grammatical variations, and minor wording differences.
+                      Treat as supported if the underlying medical fact
+                      is the same, even if surface forms differ.
+
+  - "contradicted" => use ONLY for a clear factual mismatch — a different
+                      number, age, height, weight, dose, date, medication,
+                      diagnosis, or directly opposite instruction.
+                      Do NOT use "contradicted" for paraphrase, wording, or
+                      level-of-detail differences.
+
+  - "missing"      => the claim is genuinely absent from the evidence and
+                      introduces new information. Trivial connectives or
+                      generic questions like "কি করণীয়?" should be treated
+                      as supported if implied by the user's evidence.
+
+Output a SINGLE JSON object exactly matching:
+{{
+  "claims": [{{"claim": "...", "supported_by": "...", "status": "..."}}],
+  "verdict": "yes" or "no"
+}}
+
+VERDICT RULE (strict):
+  verdict = "yes" ONLY if either:
+    (a) at least one claim is "contradicted", OR
+    (b) MORE THAN HALF the claims are "missing".
+  Otherwise verdict = "no". Faithful summaries are expected to be supported
+  by the source; a single paraphrased claim should not flip the verdict.
+
+Do not output anything outside the JSON object.

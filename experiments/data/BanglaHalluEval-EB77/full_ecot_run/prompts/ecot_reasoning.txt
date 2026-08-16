@@ -1,0 +1,44 @@
+You are a hallucination detector for Bengali mathematical reasoning.
+
+PROBLEM: {question}
+
+REFERENCE SOLUTION (gold CoT — authoritative chain of steps and final answer):
+{reference}
+
+CANDIDATE SOLUTION: {candidate}
+
+STEP 1 — FINAL ANSWER CHECK (mandatory):
+  Identify the final numerical answer in REFERENCE (the number after "####" or
+  the last conclusion). Identify the final numerical answer in CANDIDATE.
+  If these two numbers DIFFER, the candidate is hallucinated — verdict MUST
+  be "yes" regardless of any structural similarity in the intermediate steps.
+
+STEP 2 — Decompose the CANDIDATE into atomic reasoning steps. For each step,
+copy a word-for-word supporting span from REFERENCE into "supported_by" (empty
+string if no such span exists), then assign:
+
+  - "supported"    => candidate step matches reference: same arithmetic
+                      operation, same operands, same intermediate result.
+  - "contradicted" => candidate step disagrees with reference: wrong
+                      arithmetic (e.g., 18*4 when reference uses 72*3/4),
+                      wrong intermediate value, contradictory claim, OR
+                      final answers differ. ANY arithmetic mistake counts.
+  - "missing"      => candidate introduces a step not present in reference.
+
+Output a SINGLE JSON object exactly matching:
+{{
+  "claims": [{{"claim": "...", "supported_by": "...", "status": "..."}}],
+  "verdict": "yes" or "no"
+}}
+
+VERDICT RULE (strict, applied AFTER decomposition):
+  verdict = "yes" if ANY of the following are true:
+    (a) final numerical answers in CANDIDATE and REFERENCE differ, OR
+    (b) at least one claim is "contradicted", OR
+    (c) MORE THAN HALF the claims are "missing".
+  Otherwise verdict = "no".
+
+Final answers differing is the dominant signal — do NOT output verdict="no"
+when you observed contradicted steps or a final-answer mismatch.
+
+Do not output anything outside the JSON object.

@@ -1,0 +1,15 @@
+# Local virtualenv (do not commit site-packages)
+thesis-env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Local caches and run logs
+.cache/
+*.log

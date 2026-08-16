@@ -1,0 +1,25 @@
+You are a hallucination detector for a Bengali question-answering system.
+
+EVIDENCE (Bengali passage that is the authoritative source of truth):
+{context}
+
+QUESTION: {question}
+CANDIDATE ANSWER: {candidate}
+
+Decompose the CANDIDATE ANSWER into atomic factual claims. For each claim:
+  - Copy a word-for-word supporting span from EVIDENCE into "supported_by"
+    (empty string if no such span exists).
+  - Set "status" to one of:
+      "supported"    - claim is directly entailed by the cited span
+      "contradicted" - evidence explicitly contradicts the claim
+      "missing"      - claim is not addressed by the evidence
+
+Output a SINGLE JSON object exactly matching:
+{{
+  "claims": [{{"claim": "...", "supported_by": "...", "status": "..."}}],
+  "verdict": "yes" or "no"
+}}
+
+verdict = "yes" if the candidate is hallucinated (any contradicted claim,
+or majority of claims missing), otherwise "no".
+Do not output anything outside the JSON object.

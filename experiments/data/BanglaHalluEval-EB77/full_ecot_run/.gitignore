@@ -1,0 +1,9 @@
+# Ignore Python bytecode and per-judge outputs/logs.
+# Per-judge result CSVs and paper tables are large and regenerable; commit
+# explicitly when ready for a milestone.
+__pycache__/
+*.pyc
+*.pyo
+
+results/_logs/
+results/*/__pycache__/
